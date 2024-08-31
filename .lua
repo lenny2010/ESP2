@@ -13,7 +13,7 @@ ESP.ShowBox = true;
 ESP.BoxType = "Corner Box Esp";
 
 --// Enable names
-ESP.ShowName = true;
+ESP.ShowName = false;
 
 --// Enable Healhbar
 ESP.ShowHealth = true;
@@ -22,7 +22,10 @@ ESP.ShowHealth = true;
 ESP.ShowTracer = false;
 
 --// Enable Distance
-ESP.ShowDistance = true;
+ESP.ShowDistance = false;
+
+--// Enable skeletons
+ESP.ShowSkeletons = true;
 
 --[[
     Enable skeletons: (currently broken)
