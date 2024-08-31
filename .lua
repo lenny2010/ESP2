@@ -19,7 +19,7 @@ ESP.ShowName = true;
 ESP.ShowHealth = true;
 
 --// Enable tracers
-ESP.ShowTracer = true;
+ESP.ShowTracer = false;
 
 --// Enable Distance
 ESP.ShowDistance = true;
@@ -49,8 +49,8 @@ ESP.ShowDistance = true;
         ShowName = false,
         ShowHealth = false,
         ShowDistance = false,
-        ShowSkeletons = false,
-        ShowTracer = true,
+        ShowSkeletons = true,
+        ShowTracer = false,
         TracerColor = Color3.new(1, 1, 1), 
         TracerThickness = 2,
         SkeletonsColor = Color3.new(1, 1, 1),
