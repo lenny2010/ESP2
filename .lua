@@ -1,63 +1,34 @@
---[[
-	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
-]]
-local ESP = loadstring(game:HttpGet("https://raw.githubusercontent.com/linemaster2/esp-library/main/library.lua"))();
+local ESP = loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-ESP-Library-9570", true))("there are cats in your walls let them out let them out let them out")
 
---// Master switch
-ESP.Enabled = true;
+local Players = game:GetService("Players")
 
---// Enable boxes
-ESP.ShowBox = true;
+ESP.Settings.TeamBased = false
+ESP.Settings.TeamColors = false
 
---// Set the box type to corner
-ESP.BoxType = "Corner Box Esp";
+local TS = require(game:GetService("ReplicatedStorage").TS)
 
---// Enable names
-ESP.ShowName = false;
+local function IsHostile(Character)
+   local Player = TS.Characters:GetPlayerFromCharacter(Character)
+   
+   if not Player then return false end
+   
+   local TeamPlayer = game.Teams:FindFirstChild(Player.Name, true)
+   
+   return TeamPlayer and TeamPlayer.Parent ~= game.Teams:FindFirstChild(game.Players.LocalPlayer.Name, true).Parent or false
+end
 
---// Enable Healhbar
-ESP.ShowHealth = true;
-
---// Enable tracers
-ESP.ShowTracer = false;
-
---// Enable Distance
-ESP.ShowDistance = false;
-
---// Enable skeletons
-ESP.ShowSkeletons = true;
-
---[[
-    Enable skeletons: (currently broken)
-    ESP.ShowSkeletons = true;
-]]
-
-
-
---[[
-    These are all the settings
-    local ESP_SETTINGS = {
-        BoxOutlineColor = Color3.new(0, 0, 0),
-        BoxColor = Color3.new(240, 255, 255),
-        NameColor = Color3.new(1, 1, 1),
-        HealthOutlineColor = Color3.new(0, 0, 0),
-        HealthHighColor = Color3.new(0, 1, 0),
-        HealthLowColor = Color3.new(1, 0, 0),
-        CharSize = Vector2.new(4, 6),
-        Teamcheck = true,
-        WallCheck = false,
-        Enabled = false,
-        ShowBox = false,
-        BoxType = "2D",
-        ShowName = false,
-        ShowHealth = false,
-        ShowDistance = false,
-        ShowSkeletons = true,
-        ShowTracer = false,
-        TracerColor = Color3.new(1, 1, 1), 
-        TracerThickness = 2,
-        SkeletonsColor = Color3.new(1, 1, 1),
-        TracerPosition = "Bottom",
-    }
-    ermm yep thats about it
-]]
+ESP:AddListener(workspace.Characters, function(Child) task.wait(1) return IsHostile(Child) end, {
+   Descendants = false,
+   Type = "Model",
+   Custom = {
+       Name = "Enemy",
+       Settings = {
+           Boxes = {
+               Color = Color3.new(245, 245, 220)
+           },
+           Tracers = {
+               Color = Color3.new(245, 245 , 220)
+           }
+       }
+   }
+})
