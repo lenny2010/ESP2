@@ -2,8 +2,8 @@ local ESP = loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script
 
 local Players = game:GetService("Players")
 
-ESP.Settings.TeamBased = false
-ESP.Settings.TeamColors = false
+ESP.Settings.TeamBased = true
+ESP.Settings.TeamColors = true
 
 local TS = require(game:GetService("ReplicatedStorage").TS)
 
